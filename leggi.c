@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "leggi.h"
+#include "definitions.h"
 
 /*void delme_2(){
 }*/
@@ -47,7 +48,7 @@ int prendi_valore_dalla_linea(char *line,int *val_ritorno){
 
 
 
-int* prendi_array_istruzioni(char *input,int *ERROR_CODE,int *dim_array_istruzioni){
+int* prendi_array_istruzioni(char *input,int *CODE,int *dim_array_istruzioni){
 
     int *array_istruzioni=NULL;
     FILE *fp_input;
@@ -63,7 +64,7 @@ int* prendi_array_istruzioni(char *input,int *ERROR_CODE,int *dim_array_istruzio
 
     if (fp_input == NULL){
         array_istruzioni = NULL;
-        *ERROR_CODE = -1;/*0 file non esistente*/
+        *CODE = -1;/*0 file non esistente*/
         *dim_array_istruzioni = 0;
         return array_istruzioni;
     }else{
@@ -100,7 +101,7 @@ int* prendi_array_istruzioni(char *input,int *ERROR_CODE,int *dim_array_istruzio
 
         if(!dimensione_array){
             *dim_array_istruzioni = dimensione_array;
-            *ERROR_CODE = -3;/*file vuoto o file non valido*/
+            *CODE = -3;/*file vuoto o file non valido*/
             return array_istruzioni;
         }
 
@@ -109,16 +110,16 @@ int* prendi_array_istruzioni(char *input,int *ERROR_CODE,int *dim_array_istruzio
             free(array_istruzioni);
             array_istruzioni = NULL;
             *dim_array_istruzioni = 0;
-            *ERROR_CODE = -1;/*-1 file non valido perche troppe istruzioni rispetto la lunghezza data*/
+            *CODE = -1;/*-1 file non valido perche troppe istruzioni rispetto la lunghezza data*/
             return array_istruzioni;
         }else
         if(i_array<dimensione_array - 1 ){
             *dim_array_istruzioni  = i_array + 1;
-            *ERROR_CODE = -2;/*-2 WARNIG: il file e valido ma le istruzioni sono minori rispetto la lunghezza data*/
+            *CODE = -2;/*-2 WARNIG: il file e valido ma le istruzioni sono minori rispetto la lunghezza data*/
             return array_istruzioni;
         }else{
             *dim_array_istruzioni = dimensione_array;
-            *ERROR_CODE = 1;/* 1 ok, il numero delle istruzioni e coerente con la dimensione data dal file*/
+            *CODE = 1;/* 1 ok, il numero delle istruzioni e coerente con la dimensione data dal file*/
             return array_istruzioni;
         }
 

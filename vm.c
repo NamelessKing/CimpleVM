@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "leggi.h"
+#include "stampa.h"
 
 /*
 gcc -g3 -std=gnu89 -fuse-ld=gold -fsanitize=address -fsanitize=undefined -pedantic-errors -Wall -Wextra -o file prove.c && ./file
@@ -9,7 +10,6 @@ gcc -g3 -std=gnu89 -fuse-ld=gold -fsanitize=address -fsanitize=undefined -pedant
 
 int main() {
 
-    int i;
     char filename[] = "test.cvm";
     int *array_istruzioni;
     int dim_array_istruzioni;
@@ -21,9 +21,11 @@ int main() {
 
 
     printf("DIMENSIONE:%d\n",dim_array_istruzioni);
-    for(i = 0;i<dim_array_istruzioni;i++){
-        printf("%d\n",array_istruzioni[i]);
+
+    if(ERROR_CODE == -2 || ERROR_CODE == 1){
+        stampa(array_istruzioni,dim_array_istruzioni);
     }
+
 
     free(array_istruzioni);
     return 0;
