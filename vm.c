@@ -3,16 +3,26 @@
 #include <string.h>
 #include "leggi.h"
 #include "stampa.h"
+#include "esegui.h"
+#include "definitions.h"
 
 /*
 gcc -g3 -std=gnu89 -fuse-ld=gold -fsanitize=address -fsanitize=undefined -pedantic-errors -Wall -Wextra -o file prove.c && ./file
 */
 
+
+
+
 int main() {
 
-    char filename[] = "test.cvm";
-    int *array_istruzioni;
-    int dim_array_istruzioni;
+    char filename[] = "Test_estremo.cvm";
+
+    int *array_istruzioni,dim_array_istruzioni;
+    unsigned int IP=0;
+    int stack[STACKSIZE];
+    unsigned int SP=0;
+    int registers[NREGISTERS]={0};
+    /*unsigned int i_register;*/
     int ERROR_CODE;
 
 
@@ -25,6 +35,9 @@ int main() {
     if(ERROR_CODE == -2 || ERROR_CODE == 1){
         stampa(array_istruzioni,dim_array_istruzioni);
     }
+
+
+    esegui(array_istruzioni,dim_array_istruzioni,&IP,stack,&SP,registers);
 
 
     free(array_istruzioni);

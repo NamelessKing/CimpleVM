@@ -4,19 +4,6 @@
 #include "leggi.h"
 #include "definitions.h"
 
-/*void delme_2(){
-}*/
-
-/*int controllo_valore_valido(char *line,int posPartenza){
-    int i, eValido = 0;
-
-    i = posPartenza;
-    while(line[i]){
-        if(line[i] >= '1' && line[i] <= '9'){
-
-        }
-    }
-}*/
 
 int prendi_valore_dalla_linea(char *line,int *val_ritorno){
     int i,flag = 0;
