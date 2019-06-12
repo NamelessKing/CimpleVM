@@ -21,6 +21,9 @@ int jmp(int valore,unsigned int *IP,int dim_array_istruzioni);
 int add(int* result, int a, int b);
 
 
+int sub(int* result, int a, int b);
+
+
 int multi(int * result,int a, int b);
 
 

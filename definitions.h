@@ -1,5 +1,4 @@
-#define NBYTES 4
-#define STACKSIZE (64 * 1024) * NBYTES
+#define STACKSIZE 16000
 #define NREGISTERS 32
 
 #define HALT 0

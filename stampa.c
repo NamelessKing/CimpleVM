@@ -4,10 +4,10 @@
 #include "stampa.h"
 #include "definitions.h"
 
-/*void delme_1(){
-}*/
-
-
+/*
+Funzione che stampa le istruzioni contenuti in int *array_istruzioni
+con un ciclo fino alla sua dimensione dato da (int dim_array_istruzioni)
+*/
 void stampa(int *array_istruzioni,int dim_array_istruzioni){
     int i = 0;
 
@@ -79,8 +79,9 @@ void stampa(int *array_istruzioni,int dim_array_istruzioni){
        	    		i+=3;
        	    		break;
     	    default:
+                    system("clear");
                     printf("ERRORE STRUTTURA CODICE MACCHINA\n");
-                    i = dim_array_istruzioni;
+                    exit(EXIT_FAILURE);
     	     		break;
 	    }
 
